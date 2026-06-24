@@ -51,11 +51,13 @@
         
     </nav>
     <!-- mobile menu -->
-    <div id="mobile-menu" class="border border-red-500 fixed top-0 right-0 bottom-0 left-0 bg-black/50 backdrop-blur-sm z-30"
+    <div id="mobile-menu" class="fixed top-0 right-0 bottom-0 left-0 bg-black/50 backdrop-blur-sm z-30"
     v-if="isMenuOpen" @click="handleClickOutside
     ">
         <!-- close button -->
-        <div class="w-5 h-5 p-6 flex justify-center items-center  cursor-pointer absolute top-4 right-4 rounded-full hover:shadow-lg hover:bg-white/30 border border-transparent hover:border-slate-100/10">
+        <div class="w-5 h-5 p-6 flex justify-center items-center cursor-pointer absolute top-4 right-4 rounded-full 
+        hover:shadow-lg hover:bg-white/30 border border-transparent hover:border-slate-100/10
+    ">
            <button class="cursor-pointer text-slate-500 hover:text-slate-800" @click="isMenuOpen = false">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
