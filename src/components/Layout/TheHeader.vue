@@ -14,6 +14,10 @@
     // 漢堡選單狀態
     const isMenuOpen = ref(false);
 
+    const handleClickOutside = () => {
+        isMenuOpen.value = false;
+    };
+
 </script>
 
 <template>
