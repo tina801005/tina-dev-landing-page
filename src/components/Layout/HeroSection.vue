@@ -6,6 +6,8 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
+
+import BaseTag from "../ui/BaseTag.vue";
 // TODO: 對話內容用渲染的，並且自動且循環撥放
 // 對話陣列內容屬性宣告
 interface ChatItem {
@@ -79,9 +81,9 @@ onUnmounted(() => {
     <section class="min-h-[85vh] flex flex-col items-center justify-center relative z-10 gap-4">
         <!-- Hero Content簡單自我介紹 -->
         <div class="text-center mb-10 flex flex-col items-center gap-3">
-            <span class="font-mono text-xs tracking-widest text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full">
+            <BaseTag class="bg-emerald-500/10 text-emerald-400">
                 FRONTEND DEVELOPER
-            </span>
+            </BaseTag>
             <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-wide ">
                 嗨，我是 <span class="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-blue-200">Tina</span>
             </h1>

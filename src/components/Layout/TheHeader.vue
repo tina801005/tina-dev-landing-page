@@ -17,15 +17,14 @@
 </script>
 
 <template>
-    <nav class="flex h-16 items-center justify-between px-6 m-3 
-    shadow-lg rounded-full bg-white/5 backdrop-blur-sm border-b border-slate-100/10 relative z-20
-    md:m-3 md:rounded-full">
+    <nav class="fixed flex w-[calc(100%-1rem)] h-16 items-center justify-between px-6 m-3
+    shadow-lg rounded-full bg-white/5 backdrop-blur-sm border-b border-slate-100/10 z-20
+    md:rounded-full">
         <!-- logo -->
         
-        <div class="">
-            <!-- border border-slate-500/50 rounded-full -->
+      
             <StatusLogo />
-        </div>
+        
 
         <!-- menu -->
         <!-- mobile -->
@@ -42,7 +41,7 @@
         <!-- table -->
         <div class="hidden md:block">
             <ul class="flex gap-6 text-slate-500 text-md font-medium tracking-wide">
-                <li class="hover:underline hover:text-slate-800"><a href="#profile">作品集</a></li>
+                <li class="hover:underline hover:text-slate-800"><a href="#portfolio-section">作品集</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#about">關於我</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#services">服務項目</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#contact">聯絡我</a></li>
@@ -67,7 +66,7 @@
         
         <div class="absolute top-50 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 ">
             <ul class="flex flex-col gap-6 text-white text-lg font-medium tracking-wide">
-                <li class="hover:underline hover:text-slate-800"><a href="#profile">作品集</a></li>
+                <li class="hover:underline hover:text-slate-800"><a href="#portfolio-section">作品集</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#about">關於我</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#services">服務項目</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#contact">聯絡我</a></li>
