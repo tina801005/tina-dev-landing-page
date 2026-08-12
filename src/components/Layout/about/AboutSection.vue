@@ -5,7 +5,6 @@
 互動效果：toggle未開展開時，所有技能膠囊都是呈現未點亮(灰色)模式。當toggle展開時，相關的技能膠囊會被點亮。 -->
 
 <script setup lang="ts">
-import { ref } from "vue";
 import BaseTag from "../../ui/BaseTag.vue";
 import SkillPill from "./SkillPill.vue";
 </script>
