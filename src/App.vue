@@ -3,7 +3,7 @@ import BackgroundAnimateShapes from "./components/ui/BackgroundAnimateShapes.vue
 import TheHeader from "./components/Layout/TheHeader.vue";
 import HeroSection from "./components/Layout/HeroSection.vue";
 import ProfileSection from "./components/Layout/ProfileSection.vue";
-import AboutSection from "./components/Layout/AboutSection.vue";
+import AboutSection from "./components/Layout/about/AboutSection.vue";
 </script>
 
 <template>
