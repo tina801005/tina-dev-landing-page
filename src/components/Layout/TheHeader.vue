@@ -47,7 +47,6 @@
             <ul class="flex gap-6 text-slate-500 text-md font-medium tracking-wide">
                 <li class="hover:underline hover:text-slate-800"><a href="#portfolio-section">作品集</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#about-section">關於我</a></li>
-                <li class="hover:underline hover:text-slate-800"><a href="#services">服務項目</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#contact">聯絡我</a></li>
             </ul>
         </div>
@@ -72,7 +71,6 @@
             <ul class="flex flex-col gap-6 text-white text-lg font-medium tracking-wide">
                 <li class="hover:underline hover:text-slate-800"><a href="#portfolio-section">作品集</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#about-section">關於我</a></li>
-                <li class="hover:underline hover:text-slate-800"><a href="#services">服務項目</a></li>
                 <li class="hover:underline hover:text-slate-800"><a href="#contact">聯絡我</a></li>
             </ul>
         </div>

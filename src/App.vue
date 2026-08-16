@@ -4,6 +4,7 @@ import TheHeader from "./components/Layout/TheHeader.vue";
 import HeroSection from "./components/Layout/HeroSection.vue";
 import ProfileSection from "./components/Layout/ProfileSection.vue";
 import AboutSection from "./components/Layout/about/AboutSection.vue";
+import TheFooter from "./components/Layout/TheFooter.vue";
 </script>
 
 <template>
@@ -14,6 +15,7 @@ import AboutSection from "./components/Layout/about/AboutSection.vue";
             <HeroSection />
             <ProfileSection />
             <AboutSection />
+            <TheFooter />
         </div>
     </div>
 </template>
