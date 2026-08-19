@@ -8,6 +8,7 @@
         iii. 成功寄出"正反饋": 成功寄出後噴彩帶 -->
         <script setup lang="ts">
         import { ref, onMounted } from 'vue';
+        import emailjs from '@emailjs/browser';
         import confetti from 'canvas-confetti';
         
         const email = ref('');
@@ -17,6 +18,11 @@
         
         const COOLDOWN_DAYS = 14;
         const COOLDOWN_MS = COOLDOWN_DAYS * 24 * 60 * 60 * 1000;
+        
+        // EmailJS 設定資訊 (可以替換成妳在 EmailJS 後台拿到的 ID)
+        const EMAILJS_SERVICE_ID = 'service_1hnxys8';
+        const EMAILJS_TEMPLATE_ID = 'template_375fgai';
+        const EMAILJS_PUBLIC_KEY = 'i0CW_n7FBMU2E9tFq';
         
         // 檢查是否處於冷卻期
         onMounted(() => {
@@ -29,37 +35,51 @@
           }
         });
         
-        const triggerConfetti = () => {
-          confetti({
-            particleCount: 140,
-            spread: 90,
-            startVelocity: 35,
-            scalar: 1.1,
-            origin: { x: 0.5, y: 0.7 },
-            colors: ['#3b82f6', '#8b5cf6', '#f59e0b', '#22c55e', '#f472b6', '#f8fafc']
-          });
-        };
-        
         const handleSubmit = async () => {
           if (isSubmitted.value || isLoading.value) return;
         
           isLoading.value = true;
         
           try {
-            // 這裡替換為妳的表單寄信 API / EmailJS 串接
-            // await sendEmailApi({ email: email.value, message: message.value });
+            // 呼叫 EmailJS 寄信 API
+            await emailjs.send(
+              EMAILJS_SERVICE_ID,
+              EMAILJS_TEMPLATE_ID,
+              {
+                from_email: email.value, // 對應 EmailJS Template 裡的 {{from_email}}
+                message: message.value,  // 對應 EmailJS Template 裡的 {{message}}
+              },
+              EMAILJS_PUBLIC_KEY
+            );
         
             // 模擬成功
             localStorage.setItem('last_email_sent_time', Date.now().toString());
             isSubmitted.value = true;
-        
-            // 觸發噴彩帶特效 🎊
-            triggerConfetti();
+              
+            // 清空輸入框
+            email.value = '';
+            message.value = '';
+
+            // 觸發成功的噴彩帶特效 🎉
+            confetti({
+              particleCount: 100,
+              spread: 70,
+              origin: { y: 0.6 }
+            });
+
           } catch (error) {
-            console.error('寄信失敗:', error);
+            console.error('EmailJS 寄送失敗:', error);
+            alert('寄送失敗，請稍後再試或直接發送至信箱。');
           } finally {
             isLoading.value = false;
           }
+          //   // 觸發噴彩帶特效 🎊
+          //   triggerConfetti();
+          // } catch (error) {
+          //   console.error('寄信失敗:', error);
+          // } finally {
+          //   isLoading.value = false;
+          // }
         };
         </script>
         
