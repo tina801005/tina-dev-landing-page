@@ -20,24 +20,24 @@ interface ChatItem {
 // 對話內容陣列-提問(clientText)+回答(tinaText)+a11y(a11yText)讀取專用
 const chatContent = ref<ChatItem[]>([
     {id:1,
-        clientText:"你好，我有一份設計稿，想找一位好溝通、切版精準的前端工程師合作！",
-        tinaText:"HI~那妳找對人囉！好溝通、理解力強是我的核心特質。我擅長透過邏輯分析，可以1:1還原 Figma 設計稿，製作出符合您預期的完美網站唷✨",
-        a11yText:"提問者說：你好，我有一份設計稿，想找一位好溝通、切版精準的前端工程師合作！Tina回答：HI~那妳找對人囉！好溝通、理解力強是我的核心特質。我擅長透過邏輯分析，可以1:1還原 Figma 設計稿，製作出符合您預期的完美網站唷～"
+        clientText:"我們團隊剛好有一份設計稿，想找能精準還原且好溝通的前端工程師！",
+        tinaText:"那你找對人囉！好溝通、理解力強是我的核心特質。我習慣先進行設計稿分析，透過邏輯架構拆解，1:1 精準還原 Figma 設計並維持高品質 Code Review✨",
+        a11yText:"提問者說：我們團隊剛好有一份設計稿，想找能精準還原且好溝通的前端工程師！Tina回答：那你找對人囉！好溝通、理解力強是我的核心特質。我習慣先進行設計稿分析，透過邏輯架構拆解，1:1 精準還原 Figma 設計並維持高品質 Code Review！"
     },
     {id:2,
-        clientText:"我想製作一頁式網站，但我沒有設計稿，請問妳也能幫我處理嗎？",
-        tinaText:"當然沒問題！只要說出您的構想與需求，我能協助您梳理脈絡、積極溝通討論。即使沒有設計稿，也能合力打造出您心目中的理想網站！",
-        a11yText:"提問者說：我想製作一頁式網站，但我沒有設計稿，請問妳也能幫我處理嗎？Tina回答：當然沒問題！只要說出您的構想與需求，我能協助您梳理脈絡、積極溝通討論。即使沒有設計稿，也能合力打造出您心目中的理想網站！"
+        clientText:"專案開發時，遇到技術瓶頸或是邏輯不明確的情境妳會如何處理？",
+        tinaText:"我會先獨立查閱文檔與排查 Bug，並善用 AI 輔助優化架構；若涉及業務邏輯，會主動梳理問題清單與團隊積極討論，確保開發方向一致！",
+        a11yText:"提問者說：專案開發時，遇到技術瓶頸或是邏輯不明確的情境妳會如何處理？Tina回答：我會先獨立查閱文檔與排查 Bug，並善用 AI 輔助優化架構；若涉及業務邏輯，會主動梳理問題清單與團隊積極討論，確保開發方向一致！"
     },
     {id:3,
-        clientText:"網站上線後，如果有一些專業技術問題，或是小疑惑想諮詢怎麼辦？",
-        tinaText:"隨時歡迎！不論是案件完成後的疑惑，或者對前端開發感興趣，我都很樂意為您提供專業諮詢與支援🤝",
-        a11yText:"提問者說：網站上線後，如果有一些專業技術問題，或是小疑惑想諮詢怎麼辦？Tina回答：隨時歡迎！不論是案件完成後的疑惑，或者對前端開發感興趣，我都很樂意為您提供專業諮詢與支援！"
+        clientText:"看到妳的作品有考慮到 a11y 與 CI/CD，為什麼自學階段會注意到這些細節？",
+        tinaText:"因為我認為優秀的前端不只是把畫面刻出來，更要注重使用者體驗與程式碼的維護性！自動化部署能提升開發效率，而 a11y 能讓更多人順暢使用產品🤝",
+        a11yText:"提問者說：看到妳的作品有考慮到 a11y 與 CI/CD，為什麼自學階段會注意到這些細節？Tina回答：因為我認為優秀的前端不只是把畫面刻出來，更要注重使用者體驗與程式碼的維護性！自動化部署能提升開發效率，而 a11y 能讓更多人順暢使用產品🤝"
     },
     {id:4,
-        clientText:"我很想製作專屬網站，但我的預算稍微有限…該怎麼辦呢？",
-        tinaText:"別擔心！Tina Studio 的報價皆符合市場標準。您可以先參考我的【服務與報價】，也很歡迎直接私訊跟我詳細聊聊，一起討論出最合適的方案！😊",
-        a11yText:"提問者說：我很想製作專屬網站，但我的預算稍微有限…該怎麼辦呢？Tina回答：別擔心！Tina Studio 的報價皆符合市場標準。您可以先參考我的【服務與報價】，也很歡迎直接私訊跟我詳細聊聊，一起討論出最合適的方案！"
+        clientText:"請問妳目前尋求的合作模式是什麼呢？",
+        tinaText:"因家庭照顧時間安排，目前優先尋求全遠端（Fully Remote）或時間具備彈性的前端開發合作團隊，歡迎直接聯繫我聊聊合作細節唷！😊",
+        a11yText:"提問者說：請問妳目前尋求的合作模式是什麼呢？Tina回答：因家庭照顧時間安排，目前優先尋求全遠端（Fully Remote）或時間具備彈性的前端開發合作團隊，歡迎直接聯繫我聊聊合作細節唷！😊"
     }
 ]);
 
@@ -104,9 +104,20 @@ onUnmounted(() => {
 
                     <div class="flex justify-start w-full items-center gap-4">
                         <!-- 圓形頭像 -->
-                        <div class="w-10 h-10 rounded-full bg-linear-to-tr from-indigo-500 to-blue-400 flex items-center justify-center text-white font-bold shrink-0 ">
-                            <span class="text-lg">C</span>
+                        <div class="w-10 h-10 rounded-full bg-linear-to-tr from-indigo-500 to-blue-400 flex items-center justify-center text-white shrink-0 shadow-inner">
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke-width="1.5" 
+                                stroke="currentColor" 
+                                aria-hidden="true"
+                                class="w-6 h-6 object-contain">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                            </svg>
+
                         </div>
+                       
                         <!-- 氣泡框 -->
                         <div class="relative max-w-xl p-5 rounded-2xl  shadow-lg bg-blue-100 backdrop-blur-md border border-blue-500/15  
                         after:content-[''] after:absolute after:bottom-[calc(55%-1rem)]  after:-left-2 after:h-4 after:w-4 after:rotate-45 after:bg-blue-100 after:border-l after:border-b after:border-blue-500/15">

@@ -20,52 +20,60 @@ interface PortfolioItem {
 const portfolioItems = ref<PortfolioItem[]>([
     {
         id: 1,
-        title: "作品名稱1",
-        description: "一句話簡述1",
-        tags: ["標籤1", "標籤2", "專有名詞1"],
+        title: "個人作品集網站",
+        description: "結合擬真問答互動、作品集展示、EmailJS表單寄信與防護機制的個人作品集網站。",
+        tags: ["無設計稿", "高品質互動體驗", "Vue3", "Vite","TailwindCSS","TypeScript","EmailJS"],
+        link: "https://tina801005.github.io/loopstudios-landing-page/",
+        github: "https://github.com/tina801005/tina-dev-landing-page"
+    },
+    {
+        id: 2,
+        title: "訂閱方案切換",
+        description: "模擬訂閱方案以及價格切換的動畫效果",
+        tags: [ "高互動性" , "高擴展性" , "RWD", "Vue3"],
         link: "https://tina801005.github.io/vue-pricing-toggle/",
         github: "https://tina801005.github.io/vue-pricing-toggle/"
     },
     {
-        id: 2,
-        title: "作品名稱2",
-        description: "一句話簡述2",
-        tags: ["標籤3", "標籤4", "專有名詞2"],
+        id: 3,
+        title: "Bookmark Landing Page",
+        description: "結合響應式切版、動態 Tab 頁籤與表單驗證的高完成度且具備高還原度排版與無障礙（a11y）互動細節的產品介紹網站。",
+        tags: ["一頁式網站","無障礙設計", "表單即時驗證", "Vue3", "Vite","TailwindCSS","TypeScript"],
         link: "https://tina801005.github.io/bookmark-landing-page/",
         github: "https://tina801005.github.io/bookmark-landing-page/"
     },
-    {
-        id: 3,
-        title: "作品名稱3",
-        description: "一句話簡述3",
-        tags: ["標籤5", "標籤6", "專有名詞3"],
-        link: "https://tina801005.github.io/loopstudios-landing-page/",
-        github: "https://tina801005.github.io/loopstudios-landing-page/"
-    },
-    {
-        id: 4,
-        title: "作品名稱4",
-        description: "一句話簡述4",
-        tags: ["標籤7", "標籤8", "專有名詞4"],
-        link: "https://tina801005.github.io/insure-landing-page/",
-        github: "https://tina801005.github.io/insure-landing-page/"
-    },
-    {
-        id: 5,
-        title: "作品名稱5",
-        description: "一句話簡述5",
-        tags: ["標籤9", "標籤10", "專有名詞5"],
-        link: "https://tina801005.github.io/fylo-landing-page/",
-        github: "https://tina801005.github.io/fylo-landing-page/"
-    },
-    {
-        id: 6,
-        title: "作品名稱6",
-        description: "一句話簡述6",
-        tags: ["標籤11", "標籤12", "專有名詞6"],
-        link: "https://tina801005.github.io/intro-component-with-signup-form/",
-        github: "https://tina801005.github.io/intro-component-with-signup-form/"
-    }
+    // {
+    //     id: 3,
+    //     title: "作品名稱3",
+    //     description: "一句話簡述3",
+    //     tags: ["標籤5", "標籤6", "專有名詞3"],
+    //     link: "https://tina801005.github.io/loopstudios-landing-page/",
+    //     github: "https://tina801005.github.io/loopstudios-landing-page/"
+    // },
+    // {
+    //     id: 4,
+    //     title: "作品名稱4",
+    //     description: "一句話簡述4",
+    //     tags: ["標籤7", "標籤8", "專有名詞4"],
+    //     link: "https://tina801005.github.io/insure-landing-page/",
+    //     github: "https://tina801005.github.io/insure-landing-page/"
+    // },
+    // {
+    //     id: 5,
+    //     title: "作品名稱5",
+    //     description: "一句話簡述5",
+    //     tags: ["標籤9", "標籤10", "專有名詞5"],
+    //     link: "https://tina801005.github.io/fylo-landing-page/",
+    //     github: "https://tina801005.github.io/fylo-landing-page/"
+    // },
+    // {
+    //     id: 6,
+    //     title: "作品名稱6",
+    //     description: "一句話簡述6",
+    //     tags: ["標籤11", "標籤12", "專有名詞6"],
+    //     link: "https://tina801005.github.io/intro-component-with-signup-form/",
+    //     github: "https://tina801005.github.io/intro-component-with-signup-form/"
+    // }
 ]);
  
  // 預覽與選取狀態
