@@ -10,6 +10,7 @@
         import { ref, onMounted } from 'vue';
         import emailjs from '@emailjs/browser';
         import confetti from 'canvas-confetti';
+        import StatusLogo from "../ui/StatusLogo.vue";
         
         const email = ref('');
         const message = ref('');
@@ -84,16 +85,17 @@
         </script>
         
         <template>
-          <footer id="contact" class="mt-20 border-t border-white/40 bg-white/30 backdrop-blur-md py-12 px-6">
+          <footer id="contact" class="mb-4 border-t border-white/40 bg-white/30 backdrop-blur-md py-12 px-6">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               
               <!-- 左側：Logo + Nav 導覽 -->
               <div class="space-y-4">
-                <h3 class="text-xl font-bold text-slate-800">Jenny</h3>
-                <nav class="flex flex-wrap gap-4 text-sm text-slate-600">
-                  <a href="#about" class="hover:text-blue-500 transition-colors">關於我</a>
-                  <a href="#projects" class="hover:text-blue-500 transition-colors">專案作品</a>
-                  <a href="#contact" class="hover:text-blue-500 transition-colors">聯絡資訊</a>
+                <StatusLogo />
+                
+                <nav class="m-7 flex flex-wrap gap-4 text-sm text-slate-600">
+                  <a href="#about-section" class="hover:underline hover:text-blue-500 transition-colors">關於我</a>
+                  <a href="#portfolio-section" class="hover:underline hover:text-blue-500 transition-colors">作品集</a>
+                  <a href="#contact" class="hover:underline hover:text-blue-500 transition-colors">聯絡我</a>
                 </nav>
               </div>
         
@@ -101,10 +103,9 @@
               <div class="space-y-6">
                 <!-- 社群連結 -->
                 <div class="flex items-center space-x-4 text-sm text-slate-600">
-                  <a href="#" target="_blank" class="hover:text-blue-500 transition-colors">GitHub</a>
-                  <a href="#" target="_blank" class="hover:text-blue-500 transition-colors">LinkedIn</a>
-                  <a href="#" target="_blank" class="hover:text-blue-500 transition-colors">Line</a>
-                  <a href="#" target="_blank" class="hover:text-blue-500 transition-colors">FB</a>
+                  <a href="https://github.com/tina801005" target="_blank" class="hover:text-blue-500 transition-colors">GitHub</a>
+                  <a href="https://www.linkedin.com/in/tinawang1005/" target="_blank" class="hover:text-blue-500 transition-colors">LinkedIn</a>
+                  <a href="https://discord.com/users/tina_801005" target="_blank" class="hover:text-blue-500 transition-colors">Discord</a>
                 </div>
         
                 <!-- Email 留言區 -->
@@ -139,6 +140,7 @@
               </div>
         
             </div>
+            <p class="text-sm text-slate-600">© 2026 Tina Wang. All rights reserved.</p>
           </footer>
         </template>
 <style scoped></style>
