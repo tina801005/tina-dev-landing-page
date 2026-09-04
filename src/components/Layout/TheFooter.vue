@@ -16,6 +16,7 @@
         const message = ref('');
         const isSubmitted = ref(false);
         const isLoading = ref(false);
+        const submitError = ref('');
         
         const COOLDOWN_DAYS = 14;
         const COOLDOWN_MS = COOLDOWN_DAYS * 24 * 60 * 60 * 1000;
@@ -40,6 +41,7 @@
           if (isSubmitted.value || isLoading.value) return;
         
           isLoading.value = true;
+          submitError.value = '';
         
           try {
             // 呼叫 EmailJS 寄信 API
@@ -70,7 +72,7 @@
 
           } catch (error) {
             console.error('EmailJS 寄送失敗:', error);
-            alert('寄送失敗，請稍後再試或直接發送至信箱。');
+            submitError.value = '寄送失敗，請稍後再試或直接發送至信箱。';
           } finally {
             isLoading.value = false;
           }
@@ -85,14 +87,14 @@
         </script>
         
         <template>
-          <footer id="contact" class="mb-4 border-t border-white/40 bg-white/30 backdrop-blur-md py-12 px-6">
+          <footer id="contact" aria-labelledby="contact-title" class="mb-4 border-t border-white/40 bg-white/30 backdrop-blur-md py-12 px-6">
             <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               
               <!-- 左側：Logo + Nav 導覽 -->
               <div class="space-y-4">
                 <StatusLogo />
                 
-                <nav class="m-7 flex flex-wrap gap-4 text-sm text-slate-600">
+                <nav aria-label="頁尾導覽" class="m-7 flex flex-wrap gap-4 text-sm text-slate-600">
                   <a href="#about-section" class="hover:underline hover:text-blue-500 transition-colors">關於我</a>
                   <a href="#portfolio-section" class="hover:underline hover:text-blue-500 transition-colors">作品集</a>
                   <a href="#contact" class="hover:underline hover:text-blue-500 transition-colors">聯絡我</a>
@@ -102,25 +104,35 @@
               <!-- 右側：聯絡資訊與 Email 留言區 -->
               <div class="space-y-6">
                 <!-- 社群連結 -->
-                <div class="flex items-center space-x-4 text-sm text-slate-600">
-                  <a href="https://github.com/tina801005" target="_blank" class="hover:text-blue-500 transition-colors">GitHub</a>
-                  <a href="https://www.linkedin.com/in/tinawang1005/" target="_blank" class="hover:text-blue-500 transition-colors">LinkedIn</a>
-                  <a href="https://discord.com/users/tina_801005" target="_blank" class="hover:text-blue-500 transition-colors">Discord</a>
-                </div>
+                <nav aria-label="社群連結" class="flex items-center space-x-4 text-sm text-slate-600">
+                  <a href="https://github.com/tina801005" target="_blank" rel="noopener noreferrer" aria-label="在新分頁開啟 GitHub" class="hover:text-blue-500 transition-colors">GitHub</a>
+                  <a href="https://www.linkedin.com/in/tinawang1005/" target="_blank" rel="noopener noreferrer" aria-label="在新分頁開啟 LinkedIn" class="hover:text-blue-500 transition-colors">LinkedIn</a>
+                  <a href="https://discord.com/users/tina_801005" target="_blank" rel="noopener noreferrer" aria-label="在新分頁開啟 Discord" class="hover:text-blue-500 transition-colors">Discord</a>
+                </nav>
         
                 <!-- Email 留言區 -->
-                <form @submit.prevent="handleSubmit" class="space-y-3 bg-white/50 p-4 rounded-xl border border-white/60">
+                <h2 id="contact-title" class="sr-only">聯絡我</h2>
+                <form aria-describedby="contact-status" :aria-busy="isLoading" @submit.prevent="handleSubmit" class="space-y-3 bg-white/50 p-4 rounded-xl border border-white/60">
+                  <label for="contact-email" class="sr-only">您的 Email</label>
                   <input
+                    id="contact-email"
                     v-model="email"
                     type="email"
                     required
+                    autocomplete="email"
+                    :aria-invalid="Boolean(submitError)"
+                    aria-describedby="contact-status"
                     :disabled="isSubmitted"
                     placeholder="您的 Email"
                     class="w-full px-3 py-2 text-sm rounded-lg border border-slate-200 bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-50"
                   />
+                  <label for="contact-message" class="sr-only">留言內容</label>
                   <textarea
+                    id="contact-message"
                     v-model="message"
                     required
+                    :aria-invalid="Boolean(submitError)"
+                    aria-describedby="contact-status"
                     rows="3"
                     :disabled="isSubmitted"
                     placeholder="留下想跟我說的話..."
@@ -136,6 +148,9 @@
                     <span v-else-if="isSubmitted">處理中請稍後（訊息已收到）</span>
                     <span v-else>送出留言</span>
                   </button>
+                  <p id="contact-status" role="status" aria-live="polite" class="text-sm text-slate-700" :class="{ 'text-red-700': submitError }">
+                    {{ submitError || (isSubmitted ? '訊息已收到，謝謝您的聯絡。' : '') }}
+                  </p>
                 </form>
               </div>
         

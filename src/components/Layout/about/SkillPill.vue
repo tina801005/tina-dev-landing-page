@@ -48,13 +48,14 @@ const getPillStyle = (category: string, type: string) => {
   <TransitionGroup 
     tag="ul" 
     name="pill-list" 
+    aria-label="技能清單"
     class="flex flex-wrap gap-2.5"
   >
     <li
       v-for="pill in shuffledPills"
       :key="pill.name"
       :class="[
-        'px-3.5 py-1.5 rounded-full text-xs md:text-sm font-medium border backdrop-blur-sm transition-all duration-300',
+        'px-3.5 py-1.5 rounded-xl text-xs md:text-sm font-medium border backdrop-blur-sm transition-all duration-300',
         getPillStyle(pill.category, pill.type) // 樣式依舊靠 getPillStyle 判斷
       ]"
     >

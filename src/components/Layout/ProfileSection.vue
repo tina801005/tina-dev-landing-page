@@ -43,7 +43,7 @@ const portfolioItems = ref<PortfolioItem[]>([
         github: "https://tina801005.github.io/bookmark-landing-page/"
     },
     // {
-    //     id: 3,
+    //     id: 4,
     //     title: "作品名稱3",
     //     description: "一句話簡述3",
     //     tags: ["標籤5", "標籤6", "專有名詞3"],
@@ -51,7 +51,7 @@ const portfolioItems = ref<PortfolioItem[]>([
     //     github: "https://tina801005.github.io/loopstudios-landing-page/"
     // },
     // {
-    //     id: 4,
+    //     id: 5,
     //     title: "作品名稱4",
     //     description: "一句話簡述4",
     //     tags: ["標籤7", "標籤8", "專有名詞4"],
@@ -77,7 +77,7 @@ const portfolioItems = ref<PortfolioItem[]>([
 ]);
  
  // 預覽與選取狀態
- const selectedId = ref<number>(portfolioItems.value[0]?.id ?? 0);
+ const selectedId = ref<number>(1);
  const url = ref<string>(portfolioItems.value[0]?.link ?? '');
  
  function selectItem(item: PortfolioItem) {
@@ -112,74 +112,85 @@ function openGithubInNewTab(item: PortfolioItem) {
 </script>
 
 <template>
-    <section id="portfolio-section" class="flex flex-col items-center justify-center gap-4 ">
+    <section id="portfolio-section" aria-labelledby="portfolio-title" class="flex flex-col items-center justify-center gap-4 mb-20">
         <!-- 作品集標題 -->
         <div class="flex flex-col items-center gap-2 mb-12">
             <BaseTag class="text-indigo-400 bg-indigo-500/10">
                 PORTFOLIO
             </BaseTag>
-            <h2 class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+            <h2 id="portfolio-title" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
                 精選作品 <span class="text-slate-400 font-light text-xl md:text-2xl">/ Projects</span>
             </h2>
         </div>
 
         <!-- 作品集展示頁 -->
-        <div class="min-h-[65vh] w-full flex items-start gap-6">
+        <div class="min-h-[65vh] w-full flex-row items-center justify-center gap-6 
+        ">
             
-            <!-- 左邊資訊區 (固定寬度，避免被右側預覽擠壓) -->
-            <div class="w-80 min-w-65 shrink-0">
-                <h4 class="text-lg text-slate-800 mb-3">作品列表</h4>
-                <div class="max-h-125 overflow-y-auto pr-2">
+            <!-- 資訊區 -->
+            <div class="w-full min-w-65 shrink-0 overflow-y-auto rounded-lg border border-white/10 p-4">
+                <p class="mb-2 text-xs tracking-[0.2em] text-slate-400">ALL PROJECT</p>
+                <div class="max-h-125 overflow-y-hidden pr-2 flex flex-row flex-wrap gap-2">
                     <!-- 作品項目細節 -->
-                    <div v-for="item in portfolioItems" :key="item.id"
-                         :class="['border-b py-3 px-2 cursor-pointer', selectedId === item.id ? 'border-slate-500 bg-slate-100' : 'border-slate-300 hover:bg-slate-100']">
-                        <div class="flex justify-between items-start" @click="selectItem(item)">
-                            <div class="pr-4 flex-1">
-                                <p class="text-slate-800 tracking-widest">{{ item.title }}</p>
-                                <p class="text-slate-400 text-sm">{{ item.description }}</p>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    <BaseTag v-for="tag in item.tags" :key="tag" class="bg-slate-500/10 text-slate-400">
-                                        {{ tag }}
-                                    </BaseTag>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col gap-2 items-end">
-                                <div class="flex gap-2">
-                                    <button @click.stop="openPreviewInNewTab(item)" class="text-xs px-3 py-1 bg-indigo-600/30 text-white rounded-full cursor-pointer hover:bg-indigo-600/50">預覽</button>
-                                    <button @click.stop="openGithubInNewTab(item)" class="text-xs px-3 py-1 bg-slate-700/30 text-white rounded-full cursor-pointer hover:bg-slate-700/50">GitHub</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div v-for="item in portfolioItems" :key="item.id" 
+                    :class="['rounded-lg border px-1 py-1', selectedId === item.id ? 'border-slate-500 bg-slate-100' : 'border-slate-300 hover:bg-slate-100']">
+                        <button type="button" :aria-pressed="selectedId === item.id" class="cursor-pointer rounded-full px-3 py-1 text-left text-sm tracking-wide text-slate-700" @click="selectItem(item)">
+                            {{ item.title }}
+                        </button>
+                        
                     </div>
                 </div>
+
+                <div v-if="selectedId" class="mt-5 border-t border-slate-200 pt-5">
+                    <p class="mb-2 text-xs tracking-[0.2em] text-slate-400">ABOUT THIS PROJECT</p>
+                    
+                    <div class="mt-4 flex gap-2">
+                        <h3 class="text-xl font-medium tracking-wide text-slate-800">{{ portfolioItems.find(item => item.id === selectedId)?.title }}</h3>
+                        <button type="button" :aria-label="`在新分頁預覽${portfolioItems.find(item => item.id === selectedId)?.title}`" @click="openPreviewInNewTab(portfolioItems.find(item => item.id === selectedId)!)" class="rounded-full bg-indigo-600/30 px-3 py-1 text-xs text-white cursor-pointer hover:bg-indigo-600/50">預覽</button>
+                        <button type="button" :aria-label="`在新分頁開啟${portfolioItems.find(item => item.id === selectedId)?.title}的 GitHub`" @click="openGithubInNewTab(portfolioItems.find(item => item.id === selectedId)!)" class="rounded-full bg-slate-700/30 px-3 py-1 text-xs text-white cursor-pointer hover:bg-slate-700/50">GitHub</button>
+                    </div>
+                    <p class="mt-3 text-sm leading-6 text-slate-500">{{ portfolioItems.find(item => item.id === selectedId)?.description }}</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <BaseTag v-for="tag in portfolioItems.find(item => item.id === selectedId)?.tags" :key="tag" class="bg-slate-500/10 text-slate-400">
+                            {{ tag }}
+                        </BaseTag>
+                    </div>
+                </div>
+                <p v-else class="mt-5 border-t border-slate-200 pt-5 text-center text-sm text-slate-400">
+                    請點選欲體驗的作品
+                </p>
             </div >
-            <!-- 右邊預覽區 (彈性寬度，內部預覽可水平捲動) -->
-            <div class="flex-1 flex flex-col items-center overflow-hidden">
+            <!-- 預覽區  -->
+            <div class="flex-1 flex flex-col items-center overflow-hidden" aria-label="作品預覽區" role="region">
                 <!-- 視口控制列 -->
-                <div class="w-full max-w-4xl mb-4 flex items-center justify-between gap-4">
-                    <div class="flex gap-2 text-xs">
-                        <button @click="setPreset('full')" class="px-3 py-1 bg-slate-700/40 text-white rounded-full cursor-pointer hover:bg-slate-700/80">全寬</button>
-                        <button @click="setPreset(375)" class="px-3 py-1 bg-slate-700/40 text-white rounded-full cursor-pointer hover:bg-slate-700/80">Mobile</button>
-                        <button @click="setPreset(768)" class="px-3 py-1 bg-slate-700/40 text-white rounded-full cursor-pointer hover:bg-slate-700/80">Tablet</button>
-                        <button @click="setPreset(1280)" class="px-3 py-1 bg-slate-700/40 text-white rounded-full cursor-pointer hover:bg-slate-700/80">Desktop</button>
+                <div class="w-full mb-4 flex items-center justify-between gap-4">
+                    <div class="flex gap-2 text-xs" role="group" aria-label="預覽尺寸">
+                        <button type="button" :aria-pressed="fullWidth" @click="setPreset('full')" class="px-3 py-1 bg-slate-700/40 text-white rounded-md cursor-pointer hover:bg-slate-700/80">全寬</button>
+                        <button type="button" :aria-pressed="!fullWidth && previewWidth === 375" @click="setPreset(375)" class="px-3 py-1 bg-slate-700/40 text-white rounded-md cursor-pointer hover:bg-slate-700/80">Mobile</button>
+                        <button type="button" :aria-pressed="!fullWidth && previewWidth === 768" @click="setPreset(768)" class="px-3 py-1 bg-slate-700/40 text-white rounded-md cursor-pointer hover:bg-slate-700/80">Tablet</button>
+                        <button type="button" :aria-pressed="!fullWidth && previewWidth === 1280" @click="setPreset(1280)" class="px-3 py-1 bg-slate-700/40 text-white rounded-md cursor-pointer hover:bg-slate-700/80">Desktop</button>
                     </div>
                     <div class="flex items-center gap-3">
-                        <input v-if="!fullWidth" type="range" min="320" max="1440" step="1" v-model.number="previewWidth" class="w-48" />
-                        <div class="text-sm text-slate-300">寬度: {{ fullWidth ? '100%' : previewWidth + 'px' }}</div>
+                        <label v-if="!fullWidth" for="preview-width" class="sr-only">預覽寬度</label>
+                        <input v-if="!fullWidth" id="preview-width" type="range" min="320" max="1440" step="1" v-model.number="previewWidth" class="w-48" />
+                        <output class="text-sm text-slate-300">寬度: {{ fullWidth ? '100%' : previewWidth + 'px' }}</output>
                     </div>
                 </div>
 
                 <div class="w-full max-w-full h-125 rounded-2xl border border-white/10 bg-slate-950/10 backdrop-blur-md shadow-2xl overflow-auto flex justify-center items-start">
-                    <div :style="fullWidth ? { width: '100%' } : { width: previewWidth + 'px' }" class="shrink-0 h-full bg-white rounded-lg overflow-hidden">
+                    <div v-if="url" :style="fullWidth ? { width: '100%' } : { width: previewWidth + 'px' }" class="shrink-0 h-full bg-white rounded-lg overflow-hidden">
                         <iframe 
                             :src="url" 
                             class="w-full h-full bg-white" 
                             frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            :title="`${portfolioItems.find(item => item.id === selectedId)?.title ?? '作品'}預覽`"
                             allowfullscreen
                         ></iframe>
                     </div>
+                    <p v-else class="flex h-full items-center justify-center text-sm text-slate-400">
+                        請點選欲體驗的作品
+                    </p>
                 </div>
             </div>
         </div>

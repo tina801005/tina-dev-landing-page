@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="fixed inset-0 pointer-events-none z-0">
+    <div aria-hidden="true" class="fixed inset-0 pointer-events-none z-0">
       <div class="absolute top-[10%] left-[5%] w-96 h-96 rounded-full bg-linear-to-br  from-indigo-500/10 to-transparent animate-xl-circle-1 blur-2xl"></div>
     
       <div class="absolute top-[40%] right-[5%] w-lg h-128 rounded-full bg-linear-to-br from-blue-500/10 to-transparent animate-xl-circle-2 blur-2xl"></div>

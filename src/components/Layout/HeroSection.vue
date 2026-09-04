@@ -43,12 +43,13 @@ const chatContent = ref<ChatItem[]>([
 
 // 輪播時，僅顯示一組對話，其餘對話隱藏，並且有淡入淡出動畫效果
 const currentChatIndex = ref(0); // 當前顯示的對話索引
+const isCarouselPaused = ref(false);
 // 使用 setInterval 來實現自動輪播，並且在每次輪播時，將 currentChatIndex 加 1，當 currentChatIndex 超過 chatContent 長度時，重置為 0
 let intervalId: number | undefined; // 用於存儲 setInterval 的 ID
 
 // 啟動輪播
 const startCarousel = () => {
-    if (intervalId === undefined) {
+    if (intervalId === undefined && !isCarouselPaused.value) {
         intervalId = window.setInterval(() => {
             currentChatIndex.value = (currentChatIndex.value + 1) % chatContent.value.length;
         }, 6000); // 每6秒輪播一次
@@ -63,9 +64,15 @@ const pauseCarousel = () => {
     }
 };
 
+const toggleCarousel = () => {
+    isCarouselPaused.value = !isCarouselPaused.value;
+    if (isCarouselPaused.value) pauseCarousel();
+    else startCarousel();
+};
+
 // 組件掛載時啟動輪播
 onMounted(() => {
-    startCarousel();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) startCarousel();
 });
 
 // 組件卸載時清除輪播
@@ -78,24 +85,41 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section class="min-h-[85vh] flex flex-col items-center justify-center relative z-10 gap-4">
+    <section aria-labelledby="hero-title" class="min-h-[85vh] flex flex-col items-center justify-center relative z-10 gap-4">
         <!-- Hero Content簡單自我介紹 -->
         <div class="text-center mb-10 flex flex-col items-center gap-3">
             <BaseTag class="bg-emerald-500/10 text-emerald-400">
                 FRONTEND DEVELOPER
             </BaseTag>
-            <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-wide ">
+            <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold text-white tracking-wide ">
                 嗨，我是 <span class="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-blue-200">Tina</span>
             </h1>
             <p class="text-slate-400 text-sm md:text-base tracking-wide max-w-md">
                 我是一名前端開發工程師，歡迎來到我的作品集😉
             </p>
         </div>
-        <div 
+        <div role="region" aria-label="Tina 的自我介紹對話" aria-live="off"
             class="w-full bg-white/30 backdrop-blur-sm rounded-3xl p-8 border border-white/10 shadow-2xl flex flex-col gap-12 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-2xl hover:shadow-blue-500/20"
             @mouseenter="pauseCarousel"
             @mouseleave="startCarousel"
+            @focusin="pauseCarousel"
+            @focusout="startCarousel"
         >
+            <button
+                type="button"
+                :aria-label="isCarouselPaused ? '播放自我介紹對話輪播' : '暫停自我介紹對話輪播'"
+                :aria-pressed="isCarouselPaused"
+                :title="isCarouselPaused ? '播放輪播' : '暫停輪播'"
+                class="self-end rounded-md p-2 text-slate-700 hover:bg-white/40"
+                @click="toggleCarousel"
+            >
+                <svg v-if="isCarouselPaused" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                </svg>
+                <svg v-else aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+                </svg>
+            </button>
             <transition name="fade"  mode="out-in">
                 <div 
                     :key="chatContent[currentChatIndex].id"
