@@ -23,7 +23,7 @@ const portfolioItems = ref<PortfolioItem[]>([
         title: "個人作品集網站",
         description: "結合擬真問答互動、作品集展示、EmailJS表單寄信與防護機制的個人作品集網站。",
         tags: ["無設計稿", "高品質互動體驗", "Vue3", "Vite","TailwindCSS","TypeScript","EmailJS"],
-        link: "https://tina801005.github.io/loopstudios-landing-page/",
+        link: "https://tina801005.github.io/tina-dev-landing-page/",
         github: "https://github.com/tina801005/tina-dev-landing-page"
     },
     {
