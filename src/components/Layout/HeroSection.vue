@@ -91,8 +91,11 @@ onUnmounted(() => {
             <BaseTag class="bg-emerald-500/10 text-emerald-400">
                 FRONTEND DEVELOPER
             </BaseTag>
-            <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold text-white tracking-wide ">
-                嗨，我是 <span class="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-blue-200">Tina</span>
+            <h1 id="hero-title" class="text-3xl md:text-5xl font-extrabold text-slate-700/80 tracking-wide ">
+               
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-slate-600 via-slate-600 to-indigo-700/80">嗨，我是 </span>
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-blue-200">Tina</span>
+                
             </h1>
             <p class="text-slate-400 text-sm md:text-base tracking-wide max-w-md">
                 我是一名前端開發工程師，歡迎來到我的作品集😉

@@ -118,16 +118,17 @@ function openGithubInNewTab(item: PortfolioItem) {
             <BaseTag class="text-indigo-400 bg-indigo-500/10">
                 PORTFOLIO
             </BaseTag>
-            <h2 id="portfolio-title" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+            <h2 id="portfolio-title" class="text-2xl md:text-3xl font-bold text-slate-400 tracking-wide">
                 精選作品 <span class="text-slate-400 font-light text-xl md:text-2xl">/ Projects</span>
             </h2>
         </div>
 
         <!-- 作品集展示頁 -->
-        <div class="flex min-h-[65vh] w-full flex-col items-stretch justify-center gap-6 md:flex-row md:items-start">
+        <div class=" w-full flex-col items-center justify-center gap-6 md:flex-row md:items-start
+        ">
             
             <!-- 資訊區 -->
-            <div class="w-full shrink-0 overflow-y-auto rounded-lg border border-white/10 p-4 md:w-80">
+            <div class="w-full shrink-0 overflow-y-auto rounded-lg border border-white/10 p-4 ">
                 <p class="mb-2 text-xs tracking-[0.2em] text-slate-400">ALL PROJECT</p>
                 <div class="max-h-125 overflow-y-hidden pr-2 flex flex-row flex-wrap gap-2">
                     <!-- 作品項目細節 -->
@@ -160,7 +161,7 @@ function openGithubInNewTab(item: PortfolioItem) {
                 </p>
             </div >
             <!-- 預覽區  -->
-            <div class="flex min-w-0 flex-1 flex-col items-center overflow-hidden" aria-label="作品預覽區" role="region">
+            <div class="flex-1 flex flex-col items-center overflow-hidden" aria-label="作品預覽區" role="region">
                 <!-- 視口控制列 -->
                 <div class="w-full mb-4 flex items-center justify-between gap-4">
                     <div class="flex gap-2 text-xs" role="group" aria-label="預覽尺寸">

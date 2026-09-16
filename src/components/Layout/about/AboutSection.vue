@@ -26,22 +26,22 @@ const toggleCategory = (id: 'about' | 'philosophy' | 'background') => {
             <BaseTag class="text-indigo-400 bg-indigo-500/10">
                 ABOUT ME & SKILLS
             </BaseTag>
-            <h2 id="about-title" class="text-2xl md:text-3xl font-bold text-white tracking-wide">
+            <h2 id="about-title" class="text-2xl md:text-3xl font-bold text-slate-400 tracking-wide">
                 ？？？？ 我是誰 <span class="text-slate-400 font-light text-xl md:text-2xl">/ Who I Am</span>
             </h2>
         </div>
         <!-- 主內容區 -->
         <div class="w-full flex items-start gap-2">
             <!-- 左側 about，toggle選單，標題+內容-->
-            <div class="w-2/3  flex flex-col gap-4 bg-white/20 p-4 rounded-lg">
+            <div class="w-2/3  flex flex-col gap-4 bg-white/20 p-4 rounded-lg ">
                 <!-- 這裡要用toggle選單來做。需要有標題+內容 -->
                 <ul class="flex flex-col gap-6">
-                    <li v-for="item in accordionData" :key="item.id" class="w-full flex flex-col border border-slate-400/30 rounded-2xl p-5">
+                    <li v-for="item in accordionData" :key="item.id" class="w-full flex flex-col border border-slate-400/30 rounded-2xl p-5 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 ease-in-out">
                             <button :id="`accordion-trigger-${item.id}`" type="button" class="w-full flex items-center justify-between px-2 cursor-pointer "
                             :aria-expanded="activeCategory === item.id"
                             :aria-controls="`accordion-panel-${item.id}`"
                             @click="toggleCategory(item.id)">
-                                <span class="cursor-pointer 
+                                <span class="cursor-pointer hover:underline
                                 ">{{ item.title }}</span>
                                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6"
                                 :class="{ 'rotate-180': activeCategory === item.id }">
@@ -56,6 +56,7 @@ const toggleCategory = (id: 'about' | 'philosophy' | 'background') => {
                                 <p v-for="(paragraph, index) in item.content" :key="index">{{ paragraph }}</p>
                             </div>
                     </li>
+                   
                 </ul>
             </div>
             <!-- 右側 skills, 技能膠囊 -->
