@@ -20,3 +20,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist # 告訴它要把 build 出來的那個資料夾丟上去
+          branch: gh-pages
