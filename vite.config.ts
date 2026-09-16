@@ -7,4 +7,5 @@ export default defineConfig({
   plugins: [vue(),
     tailwindcss()
   ],
+  base:'/tina-dev-landing-page/'
 })
