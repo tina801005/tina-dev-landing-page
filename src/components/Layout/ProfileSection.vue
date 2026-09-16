@@ -124,11 +124,10 @@ function openGithubInNewTab(item: PortfolioItem) {
         </div>
 
         <!-- 作品集展示頁 -->
-        <div class="min-h-[65vh] w-full flex-row items-center justify-center gap-6 
-        ">
+        <div class="flex min-h-[65vh] w-full flex-col items-stretch justify-center gap-6 md:flex-row md:items-start">
             
             <!-- 資訊區 -->
-            <div class="w-full min-w-65 shrink-0 overflow-y-auto rounded-lg border border-white/10 p-4">
+            <div class="w-full shrink-0 overflow-y-auto rounded-lg border border-white/10 p-4 md:w-80">
                 <p class="mb-2 text-xs tracking-[0.2em] text-slate-400">ALL PROJECT</p>
                 <div class="max-h-125 overflow-y-hidden pr-2 flex flex-row flex-wrap gap-2">
                     <!-- 作品項目細節 -->
@@ -161,7 +160,7 @@ function openGithubInNewTab(item: PortfolioItem) {
                 </p>
             </div >
             <!-- 預覽區  -->
-            <div class="flex-1 flex flex-col items-center overflow-hidden" aria-label="作品預覽區" role="region">
+            <div class="flex min-w-0 flex-1 flex-col items-center overflow-hidden" aria-label="作品預覽區" role="region">
                 <!-- 視口控制列 -->
                 <div class="w-full mb-4 flex items-center justify-between gap-4">
                     <div class="flex gap-2 text-xs" role="group" aria-label="預覽尺寸">
@@ -177,9 +176,10 @@ function openGithubInNewTab(item: PortfolioItem) {
                     </div>
                 </div>
 
-                <div class="w-full max-w-full h-125 rounded-2xl border border-white/10 bg-slate-950/10 backdrop-blur-md shadow-2xl overflow-auto flex justify-center items-start">
+                <div class="flex h-[min(70svh,800px)] min-h-125 w-full max-w-full items-start justify-center overflow-auto rounded-2xl border border-white/10 bg-slate-950/10 shadow-2xl backdrop-blur-md">
                     <div v-if="url" :style="fullWidth ? { width: '100%' } : { width: previewWidth + 'px' }" class="shrink-0 h-full bg-white rounded-lg overflow-hidden">
                         <iframe 
+                            :key="url"
                             :src="url" 
                             class="w-full h-full bg-white" 
                             frameborder="0"

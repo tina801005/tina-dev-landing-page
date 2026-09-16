@@ -85,7 +85,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section aria-labelledby="hero-title" class="min-h-[100vh] flex flex-col items-center justify-center relative z-10 gap-4">
+    <section aria-labelledby="hero-title" class="relative z-10 flex min-h-[100svh] flex-col items-center justify-center gap-4 px-1 pb-12 pt-24 scroll-mt-24">
         <!-- Hero Content簡單自我介紹 -->
         <div class="text-center mb-10 flex flex-col items-center gap-3">
             <BaseTag class="bg-emerald-500/10 text-emerald-400">
